@@ -1,26 +1,21 @@
-import { useEffect, useState } from 'react'
-import MockLoginBtn from '../components/MockLoginBtn'
+// import { useEffect, useState } from 'react'
+import useAuth from '../hooks/useAuth'; 
+import { checkAuthStatus } from '../utils/auth';
+import Login from '../components/Login'
+import Signup from '../components/Signup';
 
 function Home() {
-  const [isLogged, setIsLogged] = useState(localStorage.getItem('isLogged'))
-
-  const updateLogin = () => {
-    const currentStatus = localStorage.getItem('isLogged') === 'true'
-    const nextStatus = !currentStatus
-    localStorage.setItem('isLogged', String(nextStatus))
-    setIsLogged(String(nextStatus))
-  }
+  const user = useAuth();
 
   return (
     <>
-      <p>Please login.</p>
+      <h1>Sign in</h1>
+      <Login />
+      <br></br>
+      <p>{user ? `Hello, ${user.username}!` : 'Not logged in'}</p>
+      <h1>Sign up</h1>
+      <Signup />
       <p>See <a href='/about'>about</a>.</p>
-      <p>
-        <MockLoginBtn handleLogin={updateLogin} />
-      </p>
-      <p>
-        Logged in: { isLogged } {/* cant try to render localStorage.getItem('isLogged'), even though it has the correct value */}
-      </p>
     </>
   )
 }
