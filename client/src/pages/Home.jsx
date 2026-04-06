@@ -1,6 +1,5 @@
 // import { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'; 
-import { checkAuthStatus } from '../utils/auth';
 import Login from '../components/Login'
 import Signup from '../components/Signup';
 

@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom"
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Board from "./pages/Board.jsx";
-import { checkAuthStatus } from "./utils/auth.js";
+import { checkAuthStatus } from "./services/auth.js";
 
 const router = createBrowserRouter([
   {
